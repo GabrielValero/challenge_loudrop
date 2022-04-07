@@ -1,7 +1,9 @@
 import Head from 'next/head'
-import Image from 'next/image'
+
+import ProductsList from '../src/components/Organisms/ProductsList'
 
 export default function Home() {
+
   return (
     <div className="min-h-screen">
       <Head>
@@ -10,6 +12,9 @@ export default function Home() {
       </Head>
 
       <h1 className="text-2xl font-bold">Hola Mundo</h1>
+      
+      <ProductsList/>
+
     </div>
   )
 }
