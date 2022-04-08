@@ -1,13 +1,13 @@
 import '../styles/globals.css'
 import Head from 'next/head'
 
-import {ThemeContext} from '../src/context/ThemeContext'
+import {ProductContext} from '../src/context/ProductContext'
 
 import Footer from '../src/components/Organisms/Footer'
 
 function MyApp({ Component, pageProps }) {
   return(
-    <ThemeContext>
+    <ProductContext>
       <Head>
         <meta chartset="utf-8"/>
         <meta name="viewport" content="minimum-scale=1, initial-scale=1, width=device-width" />
@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <Component {...pageProps} />
       <Footer/>
-    </ThemeContext>
+    </ProductContext>
   )
 }
 
