@@ -23,6 +23,7 @@ html, body {
   margin: 0;
   font-family: 'Montserrat', Century Gothic !important;
   color: #455367;
+  background-color: #f4f4f4;
 }
 
 a {
@@ -46,4 +47,18 @@ a {
 h2 {
   font-weight: 600;
   font-size: 17px;
+}
+body::-webkit-scrollbar{
+  background: transparent;
+  border-radius: 10px;
+  width: 10px;
+}
+
+
+body::-webkit-scrollbar-thumb{
+  background: #e2c2d2;
+  border-radius: 10px;
+}
+.sroll-modify::-webkit-scrollbar, .sroll-modify::-webkit-scrollbar-thumb{
+  display: none;
 }

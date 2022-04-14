@@ -1,19 +1,20 @@
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 
 import useProducts from '../../hooks/useProducts'
 
 export default function Cart({product}){
   const {addProductToCart, deleteProductFromCart} = useProducts()
 
-  const [active, setActive] = useState(product.cart)
+  const [active, setActive] = useState(product.cart || false)
 
   const handleOnClick = ()=>{
     active ? deleteProductFromCart({id: product.id}) : addProductToCart({product})
-    setActive(!active)
   }
-  //console.log(product.name ,product.cart);
+  useEffect(()=>{
+    setActive(product.cart)
+  },[product.cart])
   return(
-    <div className="absolute top-3 right-3" onClick={handleOnClick}>
+    <div className="absolute top-3 right-3 text-primaryColor" onClick={handleOnClick}>
       {
         active ?
         <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg">

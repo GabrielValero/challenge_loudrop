@@ -3,36 +3,24 @@ import React, {useContext, useEffect, useState} from 'react'
 import Card from '../Molecules/Card'
 
 import ProductContext from '../../context/ProductContext'
+import useProducts from '../../hooks/useProducts'
 
 export default function ProductsList(){
 
-  const {productList, setProductList, setCartProductsList} = useContext(ProductContext)
-  const [products, setProducts] = useState()
-
+  const {products, setProducts, productList} = useContext(ProductContext)
+  const {initialProducts} = useProducts()
 
   useEffect(()=>{
-    const temp = JSON.parse(localStorage.getItem('cart'))
-    let productListTemp = productList;
-
-    if(temp){
-      setCartProductsList(temp)
-
-      productListTemp.map(productItem =>{
-        temp.findIndex(cartProduct =>  cartProduct.id == productItem.id) >= 0 && (productItem.cart = true)
-        return productItem
-      })
-
-      setProductList(productListTemp)
-    }
-    setProducts(productListTemp)
-
-    //console.log("Lista de productos", productListTemp);
-    //console.log("Lista de productos en el carrito", temp);
+    initialProducts()
   },[])
+  useEffect(()=>{
+    console.log(productList);
+    setProducts(productList)
+  }, [productList])
 
   return(
     <div className="flex flex-col sm:flex-row flex-wrap justify-center">
-      {products && products.map((product)=> <Card product={product} key={product.id}/>)}
+      {products.length > 0 ? products.map((product)=> <Card product={product} key={product.id}/>) : productList.map((product)=> <Card product={product} key={product.id}/>)}
     </div>
   )
 }
