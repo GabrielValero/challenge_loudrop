@@ -5,7 +5,7 @@ import GithubIcon from '../Atoms/GithubIcon'
 
 export default function Footer(){
   return(
-    <footer className="py-10 px-8 w-full">
+    <footer className="py-10 px-8 w-full absolute bottom-0">
       <div>
 
         <p className="light-text text-center mb-4">Hecho por Gabriel Valero para el <Link href="https://blue-manager-677.notion.site/Frontend-challenge-15c906cc610649a9992697f7800a0939"><a>challenge</a></Link> </p>

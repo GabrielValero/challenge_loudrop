@@ -11,9 +11,9 @@ export default function CartSection(){
   }
 
   return(
-    <div className="relative" style={{color: "#F00480"}} >
+    <div className="relative">
       <div className={`ml-3 ${active ? "text-primaryColor" : "text-inactiveIconColor"}`} onClick={handleFunction}>
-        <CartIcon/>
+        <CartIcon active={active}/>
       </div>
       <CartModal active={active} setActive={setActive}/>
     </div>

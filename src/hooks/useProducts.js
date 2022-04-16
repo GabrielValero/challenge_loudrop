@@ -42,7 +42,7 @@ export default function useProducts(){
 
     product.cart = true;
 
-    const validation = temp.findIndex(cartProduct =>  cartProduct.id == product.id);
+    const validation = temp ? temp.findIndex(cartProduct =>  cartProduct.id == product.id) : -1;
 
     if(validation < 0){
       localStorage.setItem('cart', JSON.stringify(temp ? temp.concat(product) : [product]))
@@ -75,11 +75,26 @@ export default function useProducts(){
 
   }
 
+  const deleteCart = ()=>{
+    const productListTemp = productList;
+
+    productListTemp.map(productItem =>{
+      cartProductsList.findIndex(cartProduct =>  cartProduct.id == productItem.id) >= 0 && (productItem.cart = false)
+      return productItem
+    })
+
+    setProductList(productListTemp)
+
+    localStorage.removeItem("cart")
+    setCartProductsList([])
+  }
+
   return{
     searchProduct,
     initialProducts,
     addProductToCart,
     deleteProductFromCart,
-    searchProduct
+    searchProduct,
+    deleteCart
   }
 }

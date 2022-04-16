@@ -59,6 +59,3 @@ body::-webkit-scrollbar-thumb{
   background: #e2c2d2;
   border-radius: 10px;
 }
-.sroll-modify::-webkit-scrollbar, .sroll-modify::-webkit-scrollbar-thumb{
-  display: none;
-}
