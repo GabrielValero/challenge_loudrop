@@ -1,4 +1,5 @@
 import React, {useContext} from 'react'
+import Link from 'next/link'
 
 import ProductContext from '../../context/ProductContext'
 import Card from '../Molecules/Card'
@@ -17,6 +18,7 @@ export default function ConfirmPage(){
           <h2 className="text-primaryColor mt-5">CONFIRMACIÓN</h2>
           <p className="text-secondaryColor font-bold text-xl mb-5">Productos: {cartProductsList.length}</p>
           <PrimaryButton link="/compra_exitosa"/>
+          <Link href="/"><a className="border-2 border-inactiveIconColor rounded-xl w-36 h-10 mt-3 flex items-center justify-center">Volver</a></Link>
         </div>
         <div>
           <div className="h-[30rem] md:overflow-hidden md:overflow-y-auto sroll-modify">
