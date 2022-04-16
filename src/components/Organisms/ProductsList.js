@@ -5,14 +5,9 @@ import Card from '../Molecules/Card'
 import ProductContext from '../../context/ProductContext'
 
 
-export default function ProductsList(){
+function ProductsList(){
 
   const {products, setProducts, productList} = useContext(ProductContext)
-
-  useEffect(()=>{
-    console.log(productList);
-    setProducts(productList)
-  }, [productList])
 
   return(
     <div className="flex flex-col sm:flex-row flex-wrap justify-center">
@@ -20,3 +15,5 @@ export default function ProductsList(){
     </div>
   )
 }
+
+export default React.memo(ProductsList)

@@ -45,16 +45,16 @@ export default function useProducts(){
     const validation = temp ? temp.findIndex(cartProduct =>  cartProduct.id == product.id) : -1;
 
     if(validation < 0){
+      const newArray = await productListTemp.map(productItem =>{
+        productItem.cart = productItem.id == product.id ? true : productItem.cart
+        return productItem
+      })
+
       localStorage.setItem('cart', JSON.stringify(temp ? temp.concat(product) : [product]))
       setCartProductsList(prevState => prevState.concat(product))
+      setProductList(newArray)
     }
 
-    const newArray = await productListTemp.map(productItem =>{
-       productItem.cart = productItem.id == product.id ? true : productItem.cart
-      return productItem
-    })
-
-    setProductList(newArray)
 
 
   }
@@ -63,16 +63,15 @@ export default function useProducts(){
     const temp = JSON.parse(localStorage.getItem('cart'))
     const productListTemp = productList;
 
-    await localStorage.setItem('cart', JSON.stringify(temp.filter( product => product.id != id && product)))
-    await setCartProductsList(prevState => prevState.filter( product => product.id != id && product))
 
     const newArray = await productListTemp.map(productItem =>{
        productItem.cart = productItem.id == id ? false : productItem.cart
       return productItem
     })
 
+    localStorage.setItem('cart', JSON.stringify(temp.filter( product => product.id != id && product)))
+    setCartProductsList(prevState => prevState.filter( product => product.id != id && product))
     setProductList(newArray)
-
   }
 
   const deleteCart = ()=>{
